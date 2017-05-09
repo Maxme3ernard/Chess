@@ -52,8 +52,17 @@ public class Plateau {
                 }
             }
         }
-        //else if (
-                //si c'est un cavalier ne pas prendre en compte cheminLibre..
+        else if (p instanceof Cavalier){
+            if(caseLibre(a,b)){
+                plateau[p.y][p.x]=null;
+                plateau[b][a]=p;
+            } else {
+                if(!p.sameColor(plateau[b][a])){
+                    plateau[p.y][p.x]=null;
+                    plateau[b][a]=p;
+                }
+            }
+        }
     }
     public boolean cheminLibre(Piece p, int a, int b){
         for(int i=0;i<Math.abs(p.x-a);i++){
