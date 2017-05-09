@@ -3,7 +3,7 @@ package chess;
 /**
  * Created by Maxime on 03/04/2017.
  */
-public class Piece {
+public abstract class Piece {
     int x;
     int y;
     boolean color; //si true: blanc, si false: noir
@@ -17,4 +17,6 @@ public class Piece {
         if(color==p.color) return true;
         return false;
     }
+
+    public abstract boolean canMove(int a,int b);
 }

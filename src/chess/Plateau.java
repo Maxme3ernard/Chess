@@ -45,25 +45,27 @@ public class Plateau {
         }
     }
     public void deplacer(Piece p,int a, int b){
-        if(cheminLibre(p,a,b)){
-            if(caseLibre(a,b)){
-                plateau[p.y][p.x]=null;
-                plateau[b][a]=p;
-            } else {
-                if(!p.sameColor(plateau[b][a])){
+        if(p.canMove(a,b)){
+            if(cheminLibre(p,a,b)){
+                if(caseLibre(a,b)){
                     plateau[p.y][p.x]=null;
                     plateau[b][a]=p;
+                } else {
+                    if(!p.sameColor(plateau[b][a])){
+                        plateau[p.y][p.x]=null;
+                        plateau[b][a]=p;
+                    }
                 }
             }
-        }
-        else if (p instanceof Cavalier){
-            if(caseLibre(a,b)){
-                plateau[p.y][p.x]=null;
-                plateau[b][a]=p;
-            } else {
-                if(!p.sameColor(plateau[b][a])){
+            else if (p instanceof Cavalier){
+                if(caseLibre(a,b)){
                     plateau[p.y][p.x]=null;
                     plateau[b][a]=p;
+                } else {
+                    if(!p.sameColor(plateau[b][a])){
+                        plateau[p.y][p.x]=null;
+                        plateau[b][a]=p;
+                    }
                 }
             }
         }
