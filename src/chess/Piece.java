@@ -7,6 +7,7 @@ public abstract class Piece {
     int x;
     int y;
     boolean color; //si true: blanc, si false: noir
+    boolean firstMove;
 
     public Piece(int x, int y, boolean c){
         this.x=x;

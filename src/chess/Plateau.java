@@ -50,23 +50,21 @@ public class Plateau {
                 if(caseLibre(a,b)){
                     plateau[p.y][p.x]=null;
                     plateau[b][a]=p;
-                } else {
-                    if(!p.sameColor(plateau[b][a])){
-                        plateau[p.y][p.x]=null;
-                        plateau[b][a]=p;
-                    }
+                } else if(!p.sameColor(plateau[b][a])){
+                    plateau[p.y][p.x]=null;
+                    plateau[b][a]=p;
                 }
+                p.firstMove=false;
             }
             else if (p instanceof Cavalier){
                 if(caseLibre(a,b)){
                     plateau[p.y][p.x]=null;
                     plateau[b][a]=p;
-                } else {
-                    if(!p.sameColor(plateau[b][a])){
-                        plateau[p.y][p.x]=null;
-                        plateau[b][a]=p;
-                    }
+                } else if(!p.sameColor(plateau[b][a])){
+                    plateau[p.y][p.x]=null;
+                    plateau[b][a]=p;
                 }
+                p.firstMove=false;
             }
         }
     }
