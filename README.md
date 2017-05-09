@@ -1,7 +1,7 @@
 # Chess
 Gestion échec / échec et mat (Maxime)
 gestion roques (Coco)
-Pion peut avancer de 2 a son premier déplacement (Maxime)
+FAIT Pion peut avancer de 2 a son premier déplacement (Maxime)
 Stockage pièces mangées (tab 1 dim mort et affichage suivant couleur)
 Afficher pièce mangées (Coco)
 

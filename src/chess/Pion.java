@@ -16,9 +16,11 @@ public class Pion extends Piece {
     public boolean canMove(int a, int b){
         if(color){
             if(a==x+1&&b==y) return true;
+            if(firstMove&&a==x+2&&b==y) return true;
         }
         if(!color){
             if(a==x-1&&b==y)return true;
+            if(firstMove&&a==x-2&&b==y) return true;
         }
         return false;
     }
