@@ -13,7 +13,7 @@ public class Tour extends Piece {
     public String toString(){
         return "I";
     }
-    public boolean canMove(int a,int b, Plateau p){
+    public boolean canMove(int a,int b){
         for(int i=1;i<8;i++){
             if(a==x+i&&b==y) return true;
             if(a==x-i&&b==y) return true;
