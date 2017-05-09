@@ -1,3 +1,8 @@
+package chess;
+
+import chess.Piece;
+import chess.Plateau;
+
 /**
  * Created by Maxime on 03/04/2017.
  */

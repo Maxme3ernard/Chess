@@ -1,3 +1,7 @@
+package chess;
+
+import chess.*;
+
 /**
  * Created by Maxime on 03/04/2017.
  */
