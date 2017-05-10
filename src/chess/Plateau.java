@@ -9,9 +9,11 @@ public class Plateau {
     int x;
     int y;
     Piece[][] plateau;
+    Piece[] cimetiere;
 
     public Plateau(){
         plateau = new Piece[8][8];
+        cimetiere= new Piece[32];
     }
     public void init(){
         for(int i=0;i<8;i++){
@@ -46,22 +48,13 @@ public class Plateau {
     }
     public void deplacer(Piece p,int a, int b){
         if(p.canMove(a,b)){
-            if(cheminLibre(p,a,b)){
+            if(cheminLibre(p,a,b)||p instanceof Cavalier){
                 if(caseLibre(a,b)){
                     plateau[p.y][p.x]=null;
                     plateau[b][a]=p;
                 } else if(!p.sameColor(plateau[b][a])){
                     plateau[p.y][p.x]=null;
-                    plateau[b][a]=p;
-                }
-                p.firstMove=false;
-            }
-            else if (p instanceof Cavalier){
-                if(caseLibre(a,b)){
-                    plateau[p.y][p.x]=null;
-                    plateau[b][a]=p;
-                } else if(!p.sameColor(plateau[b][a])){
-                    plateau[p.y][p.x]=null;
+                    ajouterMort(plateau[b][a]);
                     plateau[b][a]=p;
                 }
                 p.firstMove=false;
@@ -79,5 +72,16 @@ public class Plateau {
     public boolean caseLibre(int a,int b){
         if(plateau[b][a]==null) return true;
         return false;
+    }
+    public void ajouterMort(Piece p){
+        boolean done=false;
+        while(!done){
+            for(int i=0;i<32;i++){
+                if(cimetiere[i]==null){
+                    cimetiere[i]=p;
+                    done=true;
+                }
+            }
+        }
     }
 }

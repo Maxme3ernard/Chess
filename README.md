@@ -1,8 +1,10 @@
 # Chess
-Gestion échec / échec et mat (Maxime)
-gestion roques (Coco)
+
 FAIT Pion peut avancer de 2 a son premier déplacement (Maxime)
-Stockage pièces mangées (tab 1 dim mort et affichage suivant couleur)
+FAIT Stockage pièces mangées (tab 1 dim mort et affichage suivant couleur)
+
+Gestion échec / échec et mat (Nico)
+gestion roques (Coco)
 Afficher pièce mangées (Coco)
 
 pion dans le camp adverse -> retour de la dame (ou autre)
