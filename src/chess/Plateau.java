@@ -84,4 +84,18 @@ public class Plateau {
             }
         }
     }
+    public double score(boolean c){
+        double score=0.;
+        for(int i=0;i<32;i++){
+            Piece p=cimetiere[i];
+            if(p.color!=c){
+                if(p instanceof Pion) score+=1;
+                if(p instanceof Cavalier) score+=3.2;
+                if(p instanceof Fou) score+=3.33;
+                if(p instanceof Tour) score+=5.1;
+                if(p instanceof Dame) score+=8.8;
+            }
+        }
+        return score;
+    }
 }
