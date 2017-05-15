@@ -3,8 +3,8 @@
 FAIT Pion peut avancer de 2 a son premier déplacement (Maxime)
 FAIT Stockage pièces mangées (tab 1 dim mort et affichage suivant couleur)
 FAIT score
+FAIT Gestion échec
 
-Gestion échec / échec et mat (Nico)
 gestion roques (Coco)
 Afficher pièce mangées (Coco)
 
