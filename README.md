@@ -8,7 +8,7 @@ FAIT Gestion échec
 gestion roques (Coco)
 Afficher pièce mangées (Coco)
 
-pion dans le camp adverse -> retour de la dame (ou autre)
+Promotion (échange d'un pion qui parvient dans le camp adverse contre une dame, une tour, un cavalier ou un fou)
 gestion du tour par tour
 
 
