@@ -5,7 +5,7 @@ FAIT Stockage pièces mangées (tab 1 dim mort et affichage suivant couleur)
 FAIT score
 FAIT Gestion échec
 
-gestion roques (Coco)
+FAIT gestion roques (Coco)
 Afficher pièce mangées (Coco)
 
 Promotion (échange d'un pion qui parvient dans le camp adverse contre une dame, une tour, un cavalier ou un fou)
