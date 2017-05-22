@@ -21,5 +21,6 @@ public class Tour extends Piece {
             if(a==x&&b==y-i) return true;
         }
         return false;
+
     }
 }

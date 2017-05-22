@@ -98,4 +98,49 @@ public class Plateau {
         }
         return score;
     }
+
+    public void Roque(Piece Tour,Piece Roi, boolean Taille){// true petit false grand
+        if(Tour instanceof Tour && Roi instanceof Roi){ //vérification du type de piece
+            boolean chemin =false;
+            if(Tour.color == true) {// vérification du placement des pieces
+                if(Roi.x == 8 && Roi.y == 5) {
+                    if (Tour.firstMove && Roi.firstMove) {
+                        if (Taille) {
+                            chemin = cheminLibre(Tour, 8, 6);
+                            if (Tour.x == 8 && Tour.y == 8 && chemin) {
+                                Tour.y = 6;
+                                Roi.y = 7;
+                            }
+                        } else {
+                            chemin = cheminLibre(Tour, 8, 4);
+                            if (Tour.x == 8 && Tour.y == 1 && chemin) {
+                                Tour.y = 4;
+                                Roi.y = 3;
+                            }
+                        }
+                    }
+                }
+            } else{
+                if(Roi.x == 1 && Roi.y == 4) {
+                    if (Tour.firstMove && Roi.firstMove) {
+                        if (Taille) {
+                            chemin = cheminLibre(Tour, 1, 3);
+                            if (Tour.x == 1 && Tour.y == 1 && chemin) {
+                                Tour.y = 3;
+                                Roi.y = 2;
+                            }
+                        } else {
+                            chemin = cheminLibre(Tour, 1    , 5);
+                            if (Tour.x == 1 && Tour.y == 8 && chemin) {
+                                Tour.y = 5;
+                                Roi.y = 6;
+                            }
+                        }
+                    }
+                }
+            }
+        }else System.out.println("Roque impossible!");
+    }
+
+
 }
