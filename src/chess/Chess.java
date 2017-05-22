@@ -12,6 +12,10 @@ public class Chess {
 
         Player p1=creerJoueur(1);
         Player p2=creerJoueur(2);
+        while(!p.gagner()){
+
+        }
+
     }
     public static Player creerJoueur(int a){
         System.out.println("Le joueur "+a+" rentre son nom:");
