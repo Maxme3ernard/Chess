@@ -101,6 +101,23 @@ public class Plateau {
         }
         return score;
     }
+    public boolean echec(int x, int y){
+        for(int i=0;i<8;i++) {
+            for (int j = 0; j < 8; j++) {
+                    if(plateau[i][j].canMove(x,y)&&cheminLibre(plateau[i][j],x,y)&&plateau[i][j].color!=plateau[y][x].color) return true;
+                    if(plateau[i][j] instanceof Cavalier&&cheminLibre(plateau[i][j],x,y)&&plateau[i][j].color!=plateau[y][x].color) return true;
+            }
+        }
+        return false;
+    }
+    public boolean gagner(){
+        for(int i=0;i<cimetiere.length;i++){
+            if(cimetiere[i] instanceof Roi){
+                return true;
+            }
+        }
+        return false;
+    }
 
     public Piece pieceAt(int x, int y) {
         return plateau[y][x];

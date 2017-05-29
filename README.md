@@ -3,12 +3,12 @@
 FAIT Pion peut avancer de 2 a son premier déplacement (Maxime)
 FAIT Stockage pièces mangées (tab 1 dim mort et affichage suivant couleur)
 FAIT score
+FAIT Gestion échec
 
-Gestion échec / échec et mat (Nico)
-gestion roques (Coco)
+FAIT gestion roques (Coco)
 Afficher pièce mangées (Coco)
 
-pion dans le camp adverse -> retour de la dame (ou autre)
+Promotion (échange d'un pion qui parvient dans le camp adverse contre une dame, une tour, un cavalier ou un fou)
 gestion du tour par tour
 
 

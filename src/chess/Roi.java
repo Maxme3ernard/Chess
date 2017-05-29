@@ -20,6 +20,15 @@ public class Roi extends Piece {
         }
         return false;
     }
+    public boolean echec(Plateau p){
+        for(int i=0;i<8;i++) {
+            for (int j = 0; j < 8; j++) {
+                if(p.plateau[i][j].canMove(this.x,this.y)&&p.cheminLibre(p.plateau[i][j],this.x,this.y)) return true;
+                if(p.plateau[i][j] instanceof Cavalier&&p.cheminLibre(p.plateau[i][j],this.x,this.y)) return true;
+            }
+        }
+        return false;
+    }
 
     @Override
     protected int pieceTypeId() {
