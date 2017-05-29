@@ -61,7 +61,7 @@ public class Plateau {
     }
 
     public boolean canMove(Piece p, int x, int y) {
-        return p.canMove(x, y) && (cheminLibre(p, x, y) || p instanceof Cavalier);
+        return p.canMove(x, y) && (cheminLibre(p, x, y) || p instanceof Cavalier)&&(!(p instanceof Roi && echec(x,y)));
     }
 
     public boolean cheminLibre(Piece p, int a, int b){
