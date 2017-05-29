@@ -13,6 +13,7 @@ public abstract class Piece {
         this.x=x;
         this.y=y;
         color=c;
+        firstMove=true;
     }
     public boolean sameColor(Piece p){
         return color == p.color;
