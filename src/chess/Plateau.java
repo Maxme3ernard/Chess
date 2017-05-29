@@ -67,7 +67,7 @@ public class Plateau {
     public boolean cheminLibre(Piece p, int a, int b){
         for(int i=0;i<Math.abs(p.x-a);i++){
             for(int j=0;j<Math.abs(b-p.y);j++){
-                if(plateau[j][i]!=null) return false;
+                if(plateau[b+j][a+i]!=null) return false;
             }
         }
         return true;

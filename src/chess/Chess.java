@@ -13,7 +13,6 @@ public class Chess {
         Player p1=creerJoueur(1);
         Player p2=creerJoueur(2);
         while(!p.gagner()){
-            System.out.println("Au tour de "+p1+" de jouer.");
             Piece piece;
         }
 
