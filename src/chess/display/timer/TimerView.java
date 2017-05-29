@@ -1,6 +1,8 @@
 package chess.display.timer;
 
-import chess.display.paint.OvalGradientPaintSkin;
+import chess.display.Skin;
+import chess.display.paint.ImagePaintSkin;
+import chess.display.paint.TranslatePaintSkin;
 import chess.time.Time;
 import chess.display.JComponentDecorator;
 import chess.display.paint.ColorPaintSkin;
@@ -26,13 +28,13 @@ public class TimerView extends JComponentDecorator<JPanel> implements Observer{
     private final JTextField whiteTime;
     private final JTextField blackTime;
 
-    public TimerView() {
+    public TimerView(Skin skin) {
         super(new JPanel());
         content.setOpaque(false);
         content.setPreferredSize(new Dimension(300,300));
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
 
-        PaintSkinPanel white = new PaintSkinPanel(new OvalGradientPaintSkin(Color.BLUE, 0.5f, .8, .6));
+        PaintSkinPanel white = new PaintSkinPanel(new TranslatePaintSkin(skin.getPiecePaint(0)));
         content.add(white);
 
         String s = "00:00:00";

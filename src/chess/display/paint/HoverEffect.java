@@ -25,9 +25,10 @@ public class HoverEffect implements PaintSkin {
         int radius = c.getWidth();
         float[] dist = {rMin,rMax};
         Color[] colors = {new Color(0,0,0,0), color};
-        RadialGradientPaint paint = new RadialGradientPaint(c.getWidth()/2,c.getHeight()/2,radius, dist, colors);
-        g2.setPaint(paint);
+        //RadialGradientPaint paint = new RadialGradientPaint(c.getWidth()/2,c.getHeight()/2,radius, dist, colors);
+        //g2.setPaint(paint);
 
+        g2.setColor(color);
         Composite old = g2.getComposite();
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alphaComposite));
 
