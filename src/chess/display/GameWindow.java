@@ -58,7 +58,7 @@ public class GameWindow {
         piecePaintSkin.setSkin(skin);
 
         BoardView boardView = new BoardView(new MoveDisplay(plateau, container::repaint),500,500, skin);
-      //  boardView.addTo(container, BorderLayout.CENTER);
+        //boardView.addTo(container, BorderLayout.CENTER);
 
         TimeCounter timeCounter = new TimeCounter(200);
         Timer timer = new Timer(1000, timeCounter);

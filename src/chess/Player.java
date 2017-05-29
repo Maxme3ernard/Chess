@@ -20,10 +20,10 @@ public class Player {
         int b; //coordonnée x de la pièce séléctionnée
         int y; //coordonnée y de la case séléctionnée
         int x; //coordonnée x de la case séléctionnée
-        if(!p.deplacer(p.plateau[a][b], y, x)){
+        /*if(!p.deplacer(p.plateau[a][b], y, x)){
             System.out.println("Le déplacement n'a pas été effectué.");
             return false;
-        }
+        }*/
         return true;
     }
 }

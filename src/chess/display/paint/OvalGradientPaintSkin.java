@@ -24,7 +24,7 @@ public class OvalGradientPaintSkin implements PaintSkin {
     public void paint(Graphics2D g2, JComponent c) {
         float yScale = 150;
 
-        int radius = c.getWidth();
+        int radius = 90;
         float[] dist = {0,1f};
         Color[] colors = {color, new Color(0,0,0,0)};
         RadialGradientPaint paint = new RadialGradientPaint(c.getWidth()/2,c.getHeight()/2,radius, dist, colors);
@@ -33,22 +33,27 @@ public class OvalGradientPaintSkin implements PaintSkin {
         Composite old = g2.getComposite();
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alphaComposite));
 
-        /*Point2D cen = new Point2D.Float(c.getX() + c.getWidth()/2, c.getY() + c.getHeight() / 2);
-        AffineTransform origin = AffineTransform.getTranslateInstance(-cen.getX(), -cen.getY());
-        AffineTransform center = AffineTransform.getTranslateInstance(c.getWidth() / 2, c.getHeight() / 2);
-        AffineTransform scale = AffineTransform.getScaleInstance(yScale / cen.getY(), 1 / (yScale / cen.getY()));
-        center.concatenate(scale);
-        center.concatenate(origin);*/
+        Point2D center = new Point2D.Float(100,100);
+
+        AffineTransform moveToOrigin = AffineTransform.getTranslateInstance(-10d, -10d);
+        AffineTransform moveToCenter = AffineTransform.getTranslateInstance(c.getWidth() / 2, c.getHeight() / 2);
+
+        double y = 100 / 100d;
+        double x = 1/y;
+
+        AffineTransform at = AffineTransform.getScaleInstance(x, y);
+        moveToCenter.concatenate(at);
+        moveToCenter.concatenate(moveToOrigin);
 
         AffineTransform oldT = g2.getTransform();
-        g2.setTransform(AffineTransform.getScaleInstance(0.5, 1));
+        g2.setTransform(moveToCenter);
 
 
         int width = (int) (c.getWidth() * xRatio);
         int height = (int) (c.getHeight() * yRatio);
         //g2.fillOval((c.getWidth() - width) / 2,(c.getHeight() - height) / 2, width, height);
 
-        g2.fillRect(c.getX()*10, c.getY(), c.getWidth() * 3, c.getHeight() * 3);
+        g2.fillRect(-c.getWidth(), -c.getHeight(), c.getWidth() * 3, c.getHeight() * 3);
         g2.setComposite(old);
         g2.setTransform(oldT);
     }
