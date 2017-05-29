@@ -15,13 +15,16 @@ public class Pion extends Piece {
     }
     public boolean canMove(int a, int b){
         if(color){
-            if(a==x+1&&b==y) return true;
-            if(firstMove&&a==x+2&&b==y) return true;
+            if(a==x && (b == y + 1 || (b == y + 2 && firstMove))) return true;
         }
         if(!color){
-            if(a==x-1&&b==y)return true;
-            if(firstMove&&a==x-2&&b==y) return true;
+            if(a==x && (b == y - 1 || (b == y - 2 && firstMove))) return true;
         }
         return false;
+    }
+
+    @Override
+    protected int pieceTypeId() {
+        return 0;
     }
 }

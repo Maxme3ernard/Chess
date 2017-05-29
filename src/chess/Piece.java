@@ -15,9 +15,14 @@ public abstract class Piece {
         color=c;
     }
     public boolean sameColor(Piece p){
-        if(color==p.color) return true;
-        return false;
+        return color == p.color;
     }
 
     public abstract boolean canMove(int a,int b);
+
+    protected abstract int pieceTypeId();
+
+    public final int getPieceTypeId(){
+        return pieceTypeId() + (color ? 0 : 6);
+    }
 }

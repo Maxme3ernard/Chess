@@ -22,4 +22,9 @@ public class Tour extends Piece {
         }
         return false;
     }
+
+    @Override
+    protected int pieceTypeId() {
+        return 3;
+    }
 }

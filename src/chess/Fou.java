@@ -19,4 +19,9 @@ public class Fou extends Piece {
         }
         return false;
     }
+
+    @Override
+    protected int pieceTypeId() {
+        return 1;
+    }
 }

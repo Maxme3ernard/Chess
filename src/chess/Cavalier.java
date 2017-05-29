@@ -23,4 +23,9 @@ public class Cavalier extends Piece {
         if(a==x-1&&b==y-2) return true;
         return false;
     }
+
+    @Override
+    protected int pieceTypeId() {
+        return 2;
+    }
 }

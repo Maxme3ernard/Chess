@@ -47,20 +47,23 @@ public class Plateau {
         }
     }
     public void deplacer(Piece p,int a, int b){
-        if(p.canMove(a,b)){
-            if(cheminLibre(p,a,b)||p instanceof Cavalier){
-                if(caseLibre(a,b)){
-                    plateau[p.y][p.x]=null;
-                    plateau[b][a]=p;
-                } else if(!p.sameColor(plateau[b][a])){
-                    plateau[p.y][p.x]=null;
-                    ajouterMort(plateau[b][a]);
-                    plateau[b][a]=p;
-                }
-                p.firstMove=false;
+        if (canMove(p , a, b)){
+            if (caseLibre(a, b)) {
+                plateau[p.y][p.x] = null;
+                plateau[b][a] = p;
+            } else if (!p.sameColor(plateau[b][a])) {
+                plateau[p.y][p.x] = null;
+                ajouterMort(plateau[b][a]);
+                plateau[b][a] = p;
             }
+            p.firstMove = false;
         }
     }
+
+    public boolean canMove(Piece p, int x, int y) {
+        return p.canMove(x, y) && (cheminLibre(p, x, y) || p instanceof Cavalier);
+    }
+
     public boolean cheminLibre(Piece p, int a, int b){
         for(int i=0;i<Math.abs(p.x-a);i++){
             for(int j=0;j<Math.abs(b-p.y);j++){
@@ -97,5 +100,9 @@ public class Plateau {
             }
         }
         return score;
+    }
+
+    public Piece pieceAt(int x, int y) {
+        return plateau[y][x];
     }
 }

@@ -20,4 +20,9 @@ public class Roi extends Piece {
         }
         return false;
     }
+
+    @Override
+    protected int pieceTypeId() {
+        return 5;
+    }
 }
