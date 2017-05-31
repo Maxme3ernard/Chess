@@ -51,10 +51,14 @@ public class Plateau {
             if (caseLibre(a, b)) {
                 plateau[p.y][p.x] = null;
                 plateau[b][a] = p;
+                p.x=a;
+                p.y=b;
             } else if (!p.sameColor(plateau[b][a])) {
                 plateau[p.y][p.x] = null;
                 ajouterMort(plateau[b][a]);
                 plateau[b][a] = p;
+                p.x=0;
+                p.y=b;
             }
             p.firstMove = false;
         }
@@ -65,11 +69,18 @@ public class Plateau {
     }
 
     public boolean cheminLibre(Piece p, int a, int b){
-        for(int i=0;i<Math.abs(p.x-a);i++){
-            for(int j=0;j<Math.abs(b-p.y);j++){
-                if(plateau[b+j][a+i]!=null) return false;
+        if(p.x-a==0) for(int i=0;i<Math.abs(b-p.y);i++){
+            if(plateau[b+i][a]!=null) return false;
+        }
+        if(p.y-b==0) for(int i=0;i<Math.abs(p.x-a);i++){
+            if(plateau[b][a+i]!=null) return false;
+        }
+        if(Math.abs(p.y-b)==Math.abs(p.x-a)){
+            for(int i=0;i<Math.abs(p.x-a);i++){
+                if(plateau[b+i][a+i]!=null) return false;
             }
         }
+        if(Math.abs(p.y-b)!=Math.abs(p.x-a)) return false;
         return true;
     }
     public boolean caseLibre(int a,int b){
