@@ -4,8 +4,12 @@ import chess.Plateau;
 import chess.display.board.BoardView;
 import chess.display.board.MoveDisplay;
 import chess.display.board.PiecePaintSkin;
+import chess.display.history.HistoryView;
+import chess.display.menu.MenuView;
 import chess.display.paint.*;
+import chess.display.score.ScoreView;
 import chess.display.timer.TimerView;
+import chess.display.util.JComponentDecorator;
 import chess.time.TimeCounter;
 
 import javax.imageio.ImageIO;
@@ -18,13 +22,12 @@ import java.io.IOException;
 /**
  * Created by coni on 09/05/2017.
  */
-public class GameWindow {
-    private final JPanel container = new JPanel();
+public class GameWindow extends JComponentDecorator<JPanel> {
 
     public GameWindow() {
-        //container.setBackground(Color.red);
-        container.setOpaque(false);
-        container.setLayout(new BorderLayout());
+        super(new JPanel());
+        content.setOpaque(false);
+        content.setLayout(new BorderLayout());
     }
 
     public void createGame(){
@@ -42,9 +45,11 @@ public class GameWindow {
 
         BufferedImage white = null;
         BufferedImage black = null;
+        BufferedImage whiteName = null;
         try {
             white = ImageIO.read(new File("resources/white_pawn.png"));
             black = ImageIO.read(new File("resources/black_pawn.png"));
+            whiteName = ImageIO.read(new File("resources/white_name.png"));
         } catch (IOException e) {
             System.exit(42);
             e.printStackTrace();
@@ -54,24 +59,49 @@ public class GameWindow {
         for (int i = 0; i < 6; i++) piecesSkin[i] = new ImagePaintSkin(white, 0.8);
         for (int i = 6; i < 12; i++) piecesSkin[i] = new ImagePaintSkin(black, 0.8);
 
-        Skin skin = new Skin(tileBackgroundLight, tileBackgroundDark, tileHoverEffectLight, tileHoverEffectDark, tileSelectEffectLight, tileSelectEffectDark, tileHighlightEffect, piecePaintSkin, piecesSkin);
+        PaintSkin whiteNameSkin = new ImagePaintSkin(whiteName, 1);
+
+        Skin skin = new Skin(tileBackgroundLight, tileBackgroundDark, tileHoverEffectLight, tileHoverEffectDark,
+                tileSelectEffectLight, tileSelectEffectDark, tileHighlightEffect, piecePaintSkin, piecesSkin, whiteNameSkin);
         piecePaintSkin.setSkin(skin);
 
-        BoardView boardView = new BoardView(new MoveDisplay(plateau, container::repaint),500,500, skin);
-        boardView.addTo(container, BorderLayout.CENTER);
+        BoardView boardView = new BoardView(new MoveDisplay(plateau, content::repaint),500,500, skin);
+        //boardView.addTo(content, BorderLayout.CENTER);
 
         TimeCounter timeCounter = new TimeCounter(200);
         Timer timer = new Timer(1000, timeCounter);
 
         TimerView timerView = new TimerView(skin);
         timeCounter.addObserver(timerView);
-        //timerView.addTo(container, BorderLayout.CENTER);
+        //timerView.addTo(content, BorderLayout.WEST);
+
+        HistoryView historyView = new HistoryView(skin);
+       // historyView.addTo(content, BorderLayout.EAST);
+
+        ScoreView scoreView = new ScoreView(skin, plateau);
+        //scoreView.addTo(content, BorderLayout.CENTER);
+
+        MenuView menuView = new MenuView(skin);
+        menuView.addTo(content);
+
+        SwingUtilities.invokeLater(() -> {
+            scoreView.addWhitePiece(0);
+            scoreView.addWhitePiece(1);
+            scoreView.addWhitePiece(1);
+            scoreView.addWhitePiece(1);
+            scoreView.addWhitePiece(1);
+            scoreView.addWhitePiece(1);
+            scoreView.addWhitePiece(1);
+            scoreView.addWhitePiece(1);
+            scoreView.addBlackPiece(0);
+            scoreView.addBlackPiece(1);
+        });
 
         timer.start();
     }
 
     public void addTo(JComponent component, Object constraints){
-        component.add(container, constraints);
+        component.add(content, constraints);
     }
 
     private static void launchTest(){

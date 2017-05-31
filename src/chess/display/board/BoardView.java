@@ -1,7 +1,7 @@
 package chess.display.board;
 
 import chess.display.Skin;
-import chess.display.JComponentDecorator;
+import chess.display.util.JComponentDecorator;
 import chess.display.util.SpringUtilities;
 
 import javax.swing.*;

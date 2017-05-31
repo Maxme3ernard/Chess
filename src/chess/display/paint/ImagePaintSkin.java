@@ -9,18 +9,11 @@ import java.awt.image.BufferedImage;
  */
 public class ImagePaintSkin implements PaintSkin {
     private final BufferedImage bufferedImage;
-    private final double xRatio, yRatio;
     private final double fillRatio;
 
-    public ImagePaintSkin(BufferedImage bufferedImage, double xRatio, double yRatio, double fillRatio) {
-        this.bufferedImage = bufferedImage;
-        this.xRatio = xRatio;
-        this.yRatio = yRatio;
-        this.fillRatio = fillRatio;
-    }
-
     public ImagePaintSkin(BufferedImage bufferedImage, double fillRatio) {
-        this(bufferedImage, 0.5f, 0.5f, fillRatio);
+        this.bufferedImage = bufferedImage;
+        this.fillRatio = fillRatio;
     }
 
     @Override
@@ -37,8 +30,6 @@ public class ImagePaintSkin implements PaintSkin {
             h = w * r;
         }
 
-        g2.drawImage(bufferedImage,
-                (int) (((double)c.getWidth()) * xRatio - w / 2),
-                (int) (((double)c.getHeight()) * yRatio - h / 2), (int)w, (int)h, null);
+        g2.drawImage(bufferedImage, (int) ((c.getWidth() - w) /2), (int) ((c.getHeight() - h) / 2), (int)w, (int)h, null);
     }
 }

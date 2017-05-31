@@ -91,7 +91,7 @@ public class Plateau {
         double score=0.;
         for(int i=0;i<32;i++){
             Piece p=cimetiere[i];
-            if(p.color!=c){
+            if(p != null && p.color!=c){
                 if(p instanceof Pion) score+=1;
                 if(p instanceof Cavalier) score+=3.2;
                 if(p instanceof Fou) score+=3.33;
@@ -99,7 +99,7 @@ public class Plateau {
                 if(p instanceof Dame) score+=8.8;
             }
         }
-        return score;
+        return 102.5;
     }
     public boolean echec(int x, int y){
         for(int i=0;i<8;i++) {

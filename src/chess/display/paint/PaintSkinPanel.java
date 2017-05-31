@@ -1,7 +1,5 @@
 package chess.display.paint;
 
-import chess.display.JComponentDecorator;
-
 import javax.swing.*;
 import java.awt.*;
 

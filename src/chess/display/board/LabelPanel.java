@@ -1,6 +1,6 @@
 package chess.display.board;
 
-import chess.display.JComponentDecorator;
+import chess.display.util.JComponentDecorator;
 
 import javax.swing.*;
 import java.awt.*;

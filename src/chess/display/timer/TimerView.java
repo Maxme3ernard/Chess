@@ -1,11 +1,9 @@
 package chess.display.timer;
 
 import chess.display.Skin;
-import chess.display.paint.ImagePaintSkin;
-import chess.display.paint.TranslatePaintSkin;
+import chess.display.paint.TransformPaintSkin;
 import chess.time.Time;
-import chess.display.JComponentDecorator;
-import chess.display.paint.ColorPaintSkin;
+import chess.display.util.JComponentDecorator;
 import chess.display.paint.PaintSkinPanel;
 
 import javax.swing.*;
@@ -31,10 +29,13 @@ public class TimerView extends JComponentDecorator<JPanel> implements Observer{
     public TimerView(Skin skin) {
         super(new JPanel());
         content.setOpaque(false);
-        content.setPreferredSize(new Dimension(300,300));
+        content.setPreferredSize(new Dimension(300, 200));
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
 
-        PaintSkinPanel white = new PaintSkinPanel(new TranslatePaintSkin(skin.getPiecePaint(0)));
+        PaintSkinPanel white = new PaintSkinPanel(
+                new TransformPaintSkin(skin.getPiecePaint(0), -.2, .25, .8, .8),
+                new TransformPaintSkin(skin.getWhiteName(), .35,.5,.5,.4));
+        white.setOpaque(false);
         content.add(white);
 
         String s = "00:00:00";
@@ -54,7 +55,10 @@ public class TimerView extends JComponentDecorator<JPanel> implements Observer{
         whiteTime.setMaximumSize(d);
         content.add(whiteTime);
 
-        PaintSkinPanel black = new PaintSkinPanel(new ColorPaintSkin(Color.black));
+        PaintSkinPanel black = new PaintSkinPanel(
+                new TransformPaintSkin(skin.getPiecePaint(0), -.2, .25, .8, .80),
+                new TransformPaintSkin(skin.getWhiteName(), .35,.5,.5,.4));
+        black.setOpaque(false);
         content.add(black);
 
         blackTime = new JTextField("00:00:00");

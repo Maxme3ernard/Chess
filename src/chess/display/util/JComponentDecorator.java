@@ -1,4 +1,4 @@
-package chess.display;
+package chess.display.util;
 
 import javax.swing.*;
 
@@ -16,5 +16,9 @@ public class JComponentDecorator<T extends JComponent> {
         container.add(content, constraints);
         container.revalidate();
         container.repaint();
+    }
+
+    public void addTo(JComponent container){
+        addTo(container, null);
     }
 }

@@ -15,11 +15,13 @@ public class Skin {
     private final PaintSkin tileHighlightEffect;
     private final PaintSkin piecePaintSkin;
     private final PaintSkin[] piecesSkin;
+    private final PaintSkin whiteName;
 
     public Skin(PaintSkin tileBackgroundLight, PaintSkin tileBackgroundDark,
                 PaintSkin tileHoverEffectLight, PaintSkin tileHoverEffectDark,
                 PaintSkin tileSelectEffectLight, PaintSkin tileSelectEffectDark,
-                PaintSkin tileHighlightEffect, PaintSkin piecePaintSkin, PaintSkin[] piecesSkin) {
+                PaintSkin tileHighlightEffect, PaintSkin piecePaintSkin, PaintSkin[] piecesSkin,
+                PaintSkin whiteName) {
         this.tileBackgroundLight = tileBackgroundLight;
         this.tileBackgroundDark = tileBackgroundDark;
         this.tileHoverEffectLight = tileHoverEffectLight;
@@ -29,6 +31,7 @@ public class Skin {
         this.tileHighlightEffect = tileHighlightEffect;
         this.piecePaintSkin = piecePaintSkin;
         this.piecesSkin = piecesSkin;
+        this.whiteName = whiteName;
     }
 
     public PaintSkin getTileBackgroundLight() {
@@ -65,5 +68,9 @@ public class Skin {
 
     public PaintSkin getPiecePaint(int pieceTypeId) {
         return piecesSkin[pieceTypeId];
+    }
+
+    public PaintSkin getWhiteName() {
+        return whiteName;
     }
 }
